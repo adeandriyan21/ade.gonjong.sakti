@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RM Gonjong Sakti – Masakan Padang Asli</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Figtree:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="prog" id="prog"></div>
+  <header>
+    <div class="wrap bar">
+      <a class="logo" href="#atas">RM Gonjong Sakti</a>
+      <nav>
+        <a href="#paket">Paket</a><a href="#menu">Menu</a><a href="#cerita">Cerita</a><a
+          href="#reservasi">Reservasi</a><a href="#kontak">Lokasi</a><a href="#" class="lacak">Lacak pesanan</a>
+      </nav>
+      <button class="masuk" id="masukBtn">Masuk</button><button class="tema" id="tema"
+        aria-label="Ganti tema terang atau gelap">◐</button><button class="cartbtn" id="openCart"
+        aria-label="Buka keranjang">Pesanan<span id="count">0</span></button>
+    </div>
+    <div class="songket"></div>
+  </header>
+
+  <main id="atas">
+    <div class="hero">
+      <div class="wrap">
+        <div>
+          <div class="status"><i class="dot" id="dot"></i><span id="statusText">Memeriksa jam buka…</span></div>
+          <h1>Rendang yang sabar, sambal yang berani.</h1>
+          <p>Masakan Padang yang dimasak berjam-jam dengan santan kental dan rempah pilihan. Pesan dari meja Anda, kami
+            hidangkan selagi hangat.</p>
+          <a class="btn emas" href="#menu">Lihat menu</a>
+          <a class="btn garis" href="#reservasi">Pesan meja</a>
+        </div>
+        <div class="gonjong" id="heroMeja"></div>
+      </div>
+      <div class="songket"></div>
+    </div>
+
+    <div class="marquee" aria-hidden="true"><span>✦ Rendang ✦ Gulai ✦ Dendeng Balado ✦ Sambal Ijo ✦ Ayam Pop ✦ Teh Talua
+        ✦ Rendang ✦ Gulai ✦ Dendeng Balado ✦ Sambal Ijo ✦ Ayam Pop ✦ Teh Talua ✦ Rendang ✦ Gulai ✦ Dendeng Balado ✦
+        Sambal Ijo ✦ Ayam Pop ✦ Teh Talua ✦ Rendang ✦ Gulai ✦ Dendeng Balado ✦ Sambal Ijo ✦ Ayam Pop ✦ Teh Talua </span>
+    </div>
+    <section id="paket">
+      <div class="wrap">
+        <h2>Paket pilihan</h2>
+        <p class="sub">Sudah dipasangkan oleh dapur kami. Sekali tekan, semua lauk masuk ke pesanan.</p>
+        <div class="paket-grid" id="paketGrid"></div>
+        <div class="planner">
+          <div>
+            <h3>Bingung memilih? Biar kami susun.</h3>
+            <p>Pilih jumlah orang dan selera pedas, hidangan lengkap langsung masuk ke pesanan.</p>
+          </div>
+          <div class="pl">
+            <label>Jumlah orang<select id="plOrg"></select></label>
+            <label>Selera<select id="plSel">
+                <option value="tidak">Tidak pedas</option>
+                <option value="sedang">Sedang</option>
+                <option value="pedas">Pedas semua</option>
+              </select></label>
+            <button class="btn emas" id="plBtn">Susun hidangan</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="wrap">
+        <h2>Menu hidangan</h2>
+        <p class="sub">Tambahkan lauk ke pesanan, atur jumlahnya, lalu kirim pesanan langsung dari halaman ini. Harga
+          sudah termasuk pajak.</p>
+        <div class="tools">
+          <input type="search" id="cari" placeholder="Cari rendang, ayam, sambal…" aria-label="Cari menu">
+          <div id="kat" role="group" aria-label="Kategori" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+          <button class="chip" id="pedasBtn" aria-pressed="false">Yang pedas saja</button>
+          <button class="chip" id="favBtn" aria-pressed="false">♥ Favorit saya</button>
+          <button class="chip" id="kokiBtn" aria-pressed="false">★ Pilihan koki</button>
+          <select id="urut" aria-label="Urutkan menu">
+            <option value="">Urutkan</option>
+            <option value="murah">Harga terendah</option>
+            <option value="mahal">Harga tertinggi</option>
+            <option value="nama">Nama A sampai Z</option>
+          </select>
+        </div>
+        <div class="grid" id="grid"></div>
+        <div class="lagi-wrap"><button class="btn emas" id="lagi" hidden>Lihat menu lainnya (<span
+              id="lagiSisa">0</span> lagi)</button></div>
+      </div>
+    </section>
+
+    <section class="cerita" id="cerita">
+      <div class="wrap">
+        <h2>Dari dapur Minang ke meja Anda</h2>
+        <p class="sub" style="color:#e9dcc3">Kami masih memasak dengan cara yang diajarkan nenek di Bukittinggi: api
+          kecil, waktu panjang, tanpa jalan pintas.</p>
+        <div class="kolom">
+          <div>
+            <h3>Rendang 4 jam</h3>
+            <p>Daging diaduk terus di atas api kecil sampai santan mengering dan bumbunya meresap.</p>
+          </div>
+          <div>
+            <h3>Sambal giling tangan</h3>
+            <p>Cabai hijau dan merah digiling kasar setiap pagi, jadi rasanya segar dan tidak seragam.</p>
+          </div>
+          <div>
+            <h3>Hidang di meja</h3>
+            <p>Khusus makan di tempat, kami bisa menghidangkan banyak piring sekaligus. Anda hanya membayar yang
+              dimakan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reservasi">
+      <div class="wrap dua">
+        <div>
+          <h2>Kata mereka yang sudah makan</h2>
+          <p class="sub">Tiga ulasan dari pelanggan tetap kami.</p>
+          <blockquote>“Rendangnya empuk, bumbunya pekat. Rasanya seperti masakan rumah.”<footer>Rina, Tangerang</footer>
+          </blockquote>
+          <blockquote>“Sambal ijonya juara. Antrean panjang tapi pelayanannya cepat.”<footer>Bagas, Serang</footer>
+          </blockquote>
+          <blockquote>“Cocok untuk makan keluarga besar, porsinya pas dan hidangnya cepat.”<footer>Bu Maya, Cilegon
+            </footer>
+          </blockquote>
+        </div>
+        <div>
+          <h2>Pesan meja</h2>
+          <p class="sub">Isi formulir, tim kami akan mengonfirmasi reservasi Anda. Statusnya bisa dicek lewat Lacak
+            pesanan.</p>
+          <form class="res" id="resForm">
+            <label>Nama<input name="nama" required autocomplete="name"></label>
+            <div class="dua2">
+              <label>Tanggal<input type="date" name="tgl" required></label>
+              <label>Jam<input type="time" name="jam" min="07:00" max="21:00" value="12:00" required></label>
+            </div>
+            <label>Jumlah orang<select name="org"></select></label>
+            <button class="btn emas" type="submit">Kirim reservasi</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section id="ulasan">
+      <div class="wrap dua">
+        <div>
+          <h2>Ulasan pelanggan</h2>
+          <p class="sub" id="rataUlasan"></p>
+          <div id="ulasanList"></div>
+        </div>
+        <div>
+          <h2>Tulis ulasan</h2>
+          <p class="sub">Ceritakan pengalaman makan Anda.</p>
+          <form class="res" id="formUlasan">
+            <label>Nama<input id="uNama" maxlength="30" required></label>
+            <label>Penilaian<select id="uBintang">
+                <option value="5">★★★★★ (5)</option>
+                <option value="4">★★★★☆ (4)</option>
+                <option value="3">★★★☆☆ (3)</option>
+                <option value="2">★★☆☆☆ (2)</option>
+                <option value="1">★☆☆☆☆ (1)</option>
+              </select></label>
+            <label>Ulasan<textarea id="uIsi" rows="3" maxlength="200" required></textarea></label>
+            <button class="btn emas" type="submit">Kirim ulasan</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot" id="kontak">
+    <div class="songket"></div>
+    <div class="foot-cta">
+      <div class="wrap foot-cta-in">
+        <div>
+          <h2>Lapar? Hidangannya sudah siap.</h2>
+          <p>Pesan dari meja Anda, atau minta diantar ke rumah.</p>
+        </div>
+        <a class="btn" href="#menu">Lihat menu</a>
+      </div>
+    </div>
+    <div class="wrap foot-grid">
+      <div class="foot-brand"><a class="logo" href="#atas">RM Gonjong Sakti</a>
+        <p>Masakan Padang yang dimasak sabar dan dihidangkan hangat, dengan rempah pilihan.</p>
+      </div>
+      <div>
+        <h4>Jelajahi</h4>
+        <ul>
+          <li><a href="#paket">Paket pilihan</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#cerita">Cerita kami</a></li>
+          <li><a href="#reservasi">Reservasi</a></li>
+          <li><a href="#ulasan">Ulasan</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hubungi kami</h4>
+        <ul class="kontak">
+          <li><span>Alamat</span>Jl. Raya Contoh No. 12, Serang, Banten</li>
+          <li><span>WhatsApp</span><b id="waFooter">0812-3456-789</b></li>
+          <li><a href="#" class="lacak">Lacak pesanan Anda →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Jam buka</h4>
+        <p class="jam"><b>Setiap hari</b><br><span id="jamFooter">07.00 – 22.00</span> WIB</p>
+        <p class="kecil2">Makan di tempat, bawa pulang, atau diantar.</p>
+      </div>
+    </div>
+    <div class="foot-bawah">
+      <div class="wrap"><span>© 2026 RM Gonjong Sakti. Semua hak dilindungi.</span><a href="#atas">Kembali ke atas ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside id="drawer" aria-label="Keranjang pesanan" aria-hidden="true">
+    <div class="dh">Pesanan Anda <button id="closeCart" aria-label="Tutup keranjang">×</button></div>
+    <div id="lines"></div>
+    <div class="df">
+      <div class="kup"><input id="kupon" placeholder="Kode kupon" aria-label="Kode kupon" autocomplete="off"><button
+          class="btn emas" id="pakaiKupon" style="padding:10px 16px">Pakai</button></div>
+      <div class="mini"><span>Subtotal</span><span id="sub">Rp0</span></div>
+      <div class="mini disk" id="rowDisk" hidden><span id="diskNama">Diskon</span><span id="disk">-Rp0</span></div>
+      <label class="mini" id="rowPoin" hidden><span><input type="checkbox" id="pakaiPoin"> Pakai <b id="poinN">0</b>
+          poin</span><span id="poinRp"></span></label>
+      <div class="mini" id="rowOngkir" hidden><span>Ongkos kirim</span><span id="ongkir">Rp0</span></div>
+      <div class="total"><span>Total</span><span id="total">Rp0</span></div>
+      <div class="mini"><span id="estimasi">Estimasi siap: -</span><label class="bagi">Bagi <select id="bagi"
+            aria-label="Bagi tagihan"></select> orang</label></div>
+      <div class="mini disk" id="rowBagi" hidden><span>Per orang</span><span id="perOrang"></span></div>
+      <input id="nm" placeholder="Nama Anda" aria-label="Nama Anda" autocomplete="name">
+      <div class="dua2">
+        <select id="mode" aria-label="Cara makan">
+          <option>Makan di tempat</option>
+          <option>Bawa pulang</option>
+          <option>Diantar ke alamat</option>
+        </select>
+        <input id="meja" placeholder="No. meja" aria-label="Nomor meja" inputmode="numeric">
+      </div>
+      <div id="rowBayar" hidden><label>Pembayaran<select id="bayar" aria-label="Metode pembayaran">
+            <option value="Kasir">Bayar di kasir</option>
+            <option value="QRIS">QRIS</option>
+          </select></label></div>
+      <textarea id="alamat" rows="2" placeholder="Alamat pengantaran lengkap" aria-label="Alamat pengantaran"
+        hidden></textarea>
+      <textarea id="cat" rows="2" placeholder="Catatan, misalnya sambal dipisah" aria-label="Catatan"></textarea>
+      <button class="btn emas" id="kirim">Kirim pesanan</button>
+    </div>
+  </aside>
+  <dialog id="dlgBayar" aria-label="Pembayaran QRIS">
+    <div style="padding:24px;text-align:center">
+      <h3 class="judul-dlg">Bayar dengan QRIS</h3>
+      <p id="byrInfo"></p>
+      <div id="qrisBox" class="qris-box"></div>
+      <p id="byrCatatan" class="kecil"></p>
+      <label class="mini-btn" style="cursor:pointer;display:inline-block;margin-top:10px">Unggah bukti bayar
+        (opsional)<input type="file" id="buktiFile" accept="image/*" hidden></label>
+      <p id="byrBukti" class="kecil"></p>
+      <div class="btnrow" style="justify-content:center;margin-top:12px"><button class="btn emas" id="byrSudah">Saya
+          sudah bayar</button><button class="mini-btn" id="byrNanti">Bayar nanti</button></div>
+    </div>
+  </dialog>
+  <dialog id="dlgBukti" aria-label="Bukti pembayaran">
+    <div style="padding:20px;text-align:center"><img id="buktiImg" alt="Bukti pembayaran"
+        style="max-width:100%;max-height:70vh;border-radius:10px">
+      <div class="btnrow" style="justify-content:center;margin-top:12px"><button class="mini-btn"
+          id="buktiTutup">Tutup</button></div>
+    </div>
+  </dialog>
+  <dialog id="dlgStruk" aria-label="Struk pesanan">
+    <div id="strukIsi" class="strukbox"></div>
+    <div class="noprint" style="display:flex;gap:10px;padding:0 24px 24px"><button class="btn emas"
+        id="strukCetak">Cetak struk</button><button class="mini-btn" id="strukTutup">Tutup</button></div>
+  </dialog>
+  <dialog id="dlgLacak" aria-label="Lacak pesanan">
+    <div style="padding:24px">
+      <h3 style="font-family:var(--display);font-weight:400;font-size:1.6rem;color:var(--merah-tua)">Lacak pesanan dan
+        reservasi</h3>
+      <p class="sub">Status pesanan yang dibuat dari perangkat ini.</p>
+      <div id="lacakIsi"></div><button class="mini-btn" id="lacakTutup" style="margin-top:14px">Tutup</button>
+    </div>
+  </dialog>
+  <dialog id="dlgLogin" aria-label="Masuk atau buat akun">
+    <div class="akun-tab"><button type="button" data-lg="masuk" aria-current="true">Masuk</button><button type="button"
+        data-lg="daftar" aria-current="false">Buat akun</button></div>
+    <form id="formLogin" class="dinfo" style="padding:24px 28px 28px">
+      <h3>Masuk</h3>
+      <p class="sub-kecil">Masuk sebagai pelanggan atau admin.</p>
+      <label>Nama pengguna<input id="lgU" autocomplete="username" required></label>
+      <label>Kata sandi<input id="lgP" type="password" autocomplete="current-password" required></label>
+      <p id="loginErr" role="alert" class="err"></p>
+      <div class="btnrow"><button class="btn emas" type="submit">Masuk</button><button class="mini-btn" type="button"
+          id="lgBatal">Batal</button></div>
+    </form>
+    <form id="formDaftar" class="dinfo" style="padding:24px 28px 28px" hidden>
+      <h3>Buat akun</h3>
+      <p class="sub-kecil">Akun pelanggan menyimpan nama dan riwayat pesanan Anda.</p>
+      <label>Nama lengkap<input id="dfN" maxlength="30" autocomplete="name" required></label>
+      <label>Nama pengguna<input id="dfU" maxlength="20" autocomplete="username" required
+          placeholder="huruf, angka, garis bawah"></label>
+      <label>Kata sandi (minimal 6 karakter)<input id="dfP" type="password" autocomplete="new-password"
+          required></label>
+      <label>Ulangi kata sandi<input id="dfP2" type="password" autocomplete="new-password" required></label>
+      <p id="daftarErr" role="alert" class="err"></p>
+      <div class="btnrow"><button class="btn emas" type="submit">Buat akun</button><button class="mini-btn"
+          type="button" id="dfBatal">Batal</button></div>
+    </form>
+  </dialog>
+  <dialog id="dlgAkun" aria-label="Akun saya">
+    <div style="padding:24px">
+      <h3 style="font-family:var(--display);font-weight:400;font-size:1.6rem;color:var(--merah-tua)">Akun saya</h3>
+      <p id="akunInfo" style="margin:6px 0 14px"></p>
+      <h4>Riwayat pesanan</h4>
+      <div id="akunRiwayat"></div>
+      <div class="btnrow" style="margin-top:16px"><button class="btn emas" id="akunKeluar">Keluar</button><button
+          class="mini-btn" id="akunTutup">Tutup</button></div>
+    </div>
+  </dialog>
+  <div class="admin" id="admin" hidden role="dialog" aria-label="Panel admin">
+    <div class="adm-bar"><b>Panel Admin</b>
+      <nav id="admTab"></nav><button class="btn emas" id="admTutup">Lihat situs</button><button class="btn emas"
+        id="admKeluar">Keluar</button>
+    </div>
+    <div class="adm-body" id="admBody"></div>
+  </div>
+  <dialog id="dlg" aria-label="Detail menu">
+    <button class="x" id="dTutup" aria-label="Tutup detail">×</button>
+    <div class="dart" id="dArt"></div>
+    <div class="dinfo">
+      <h3 id="dNama"></h3><span class="pedas" id="dPedas"></span>
+      <p id="dDesk"></p>
+      <div class="baris">
+        <div class="qty"><button id="dMin" aria-label="Kurangi jumlah">−</button><b id="dQty">1</b><button id="dPlus"
+            aria-label="Tambah jumlah">+</button></div><b id="dHarga" class="harga"></b>
+      </div>
+      <button class="btn emas" id="dTambah">Tambah ke pesanan</button>
+    </div>
+  </dialog>
+  <button id="top" aria-label="Kembali ke atas">↑</button>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
