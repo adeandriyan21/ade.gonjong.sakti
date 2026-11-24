@@ -341,7 +341,9 @@ const hash = s => { let a = 0xdeadbeef, b = 0x41c6ce57; for (let i = 0; i < s.le
 const ses = (k, v) => { try { if (v === undefined) return sessionStorage.getItem(k); v === null ? sessionStorage.removeItem(k) : sessionStorage.setItem(k, v) } catch (e) { } };
 const esc = s => String(s).replace(/[&<>"']/g, x => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[x]));
 const bersih = s => s.replace(/[<>"`]/g, "");
-let admin = muat("rmp_admin", { u: "admin", h: hash("padang123") });
+const ADMIN_AWAL = { u: "Alfyuu", h: "20nd42i8gjk" };
+let admin = muat("rmp_admin", ADMIN_AWAL);
+if (muat("rmp_admin_v", 0) < 2) { admin = ADMIN_AWAL; simpan("rmp_admin", admin); simpan("rmp_admin_v", 2) }
 let masuk = ses("rmp_masuk") === "1", gagal = 0, kunci = 0, admTab = "ringkas", editId = null;
 const ordAll = () => muat("rmp_orders", []);
 const STATUS = ["Baru", "Diproses", "Selesai", "Batal"];
@@ -369,7 +371,7 @@ $("lgBatal").onclick = () => $("dlgLogin").close();
 $("formLogin").onsubmit = e => {
     e.preventDefault();
     if (Date.now() < kunci) { $("loginErr").textContent = "Terlalu banyak percobaan. Tunggu 30 detik lalu coba lagi."; return }
-    if ($("lgU").value.trim() === admin.u && hash($("lgP").value) === admin.h) { gagal = 0; ses("rmp_masuk", "1"); masuk = true; $("dlgLogin").close(); updMasuk(); bukaAdmin() }
+    if ($("lgU").value.trim().toLowerCase() === admin.u.toLowerCase() && hash($("lgP").value) === admin.h) { gagal = 0; ses("rmp_masuk", "1"); masuk = true; $("dlgLogin").close(); updMasuk(); bukaAdmin() }
     else if (loginPelanggan($("lgU").value.trim(), $("lgP").value)) { gagal = 0 }
     else { gagal++; if (gagal >= 5) { kunci = Date.now() + 30000; gagal = 0 } $("loginErr").textContent = "Nama pengguna atau kata sandi salah." }
 };
@@ -642,7 +644,7 @@ $("admBody").addEventListener("click", e => {
     } else if (b.dataset.act === "resetSemua") {
         if (!confirm("Reset SEMUA data situs? Menu, pesanan, reservasi, ulasan, kupon, akun pelanggan, dan pengaturan akan kembali ke awal. Akun admin tidak berubah.")) return;
         if (prompt("Ketik RESET (huruf besar) untuk melanjutkan") !== "RESET") { toast("Reset dibatalkan"); return }
-        try { Object.keys(localStorage).filter(k => k.startsWith("rmp_") && k !== "rmp_admin" && k !== "rmp_tema").forEach(k => localStorage.removeItem(k)) } catch (x) { }
+        try { Object.keys(localStorage).filter(k => k.startsWith("rmp_") && k !== "rmp_admin" && k !== "rmp_admin_v" && k !== "rmp_tema").forEach(k => localStorage.removeItem(k)) } catch (x) { }
         ses("rmp_user", null); location.reload();
     }
 });
@@ -779,7 +781,7 @@ $("waFooter").textContent = WA.replace(/^62/, "0"); isiNama(); updBayar();
 
     const BPM = 74, BT = 60 / BPM, L16 = BT / 4;
     const hz = m => 440 * Math.pow(2, (m - 69) / 12);
-    const AKOR = [[53, 57, 60, 64], [53, 59, 62, 64], [55, 59, 62, 64], [55, 60, 64, 67]];   // Dm9, G13, Cmaj9, Am9
+    const AKOR = [[53, 57, 60, 64], [53, 59, 62, 64], [55, 59, 62, 64], [55, 60, 64, 67]];
     const BASS = [38, 43, 36, 45];
     const SKALA = [62, 65, 67, 69, 72, 74, 77];
 
